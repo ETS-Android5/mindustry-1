@@ -24,10 +24,7 @@ jobs:
         echo "${{ secrets.KEYSTORE_BASE64 }}" > keystore.txt
         base64 --decode keystore.txt > bekeystore.jks
     - name: Give permision
-      run:  git update-index --chmod=+x gradlew
-            git add .
-            git commit -m "Changing permission of gradlew"
-            git push
+      run: git update-index --chmod=+x ./gradlew
     - name: Create artifacts
       env:
         keystore_password: ${{ secrets.KEYSTORE_PASSWORD_SECRET }}
