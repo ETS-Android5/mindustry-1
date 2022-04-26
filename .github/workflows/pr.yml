@@ -12,7 +12,9 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 14
-    - name: Run unit tests and build JAR
+    - name: Give permision
+      run: chmod +x ./gradlew
+    - name: build JAR
       run: ./gradlew desktop:dist
     - name: Upload desktop JAR for testing
       uses: actions/upload-artifact@v2
