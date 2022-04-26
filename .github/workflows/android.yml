@@ -21,7 +21,9 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
-      run: ./gradlew android:assembleDebug
+      run: 
+        ./gradlew android:assembleRelease -Pbuildversion=${RELEASE_VERSION} -PversionType=bleeding-edge --stacktrace
+        mv android/build/outputs/apk/standard/release/android-standard-release.apk android/build/outputs/apk/standard/release/Mindustry-BE-Android-${RELEASE_VERSION}.apk
     - name: Download a Build Artifact
       uses: actions/download-artifact@v3.0.0
     - name: Upload Android artifacts
