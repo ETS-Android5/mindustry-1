@@ -19,7 +19,7 @@ jobs:
     - name: Trigger BE build
       if: ${{ github.repository == 'youngterror3/mindustry' }}
       run: |
-        git clone --depth=1 --branch=master https://github.com/youngterror3/sidus-victor-builds ../sidus-victor-builds
+        git clone --depth=1 --branch=main https://github.com/youngterror3/sidus-victor-builds ../sidus-victor-builds
         cd ../sidus-victor-builds
         BNUM=$(($GITHUB_RUN_NUMBER + 20000))
         git tag ${BNUM}
