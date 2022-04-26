@@ -35,22 +35,8 @@ jobs:
         sed -i 's/"io.anuke.mindustry"/"io.anuke.mindustry.be"/g' android/AndroidManifest.xml
         sed -i 's/Mindustry/Mindustry BE/g' android/res/values/strings.xml
         ./gradlew pack
-        ./gradlew desktop:dist server:dist android:assembleRelease -Pbuildversion=${RELEASE_VERSION} -PversionType=bleeding-edge --stacktrace
-        mv desktop/build/libs/Mindustry.jar desktop/build/libs/Mindustry-BE-Desktop-${RELEASE_VERSION}.jar
-        mv server/build/libs/server-release.jar server/build/libs/Mindustry-BE-Server-${RELEASE_VERSION}.jar
+        ./gradlew android:assembleRelease -Pbuildversion=${RELEASE_VERSION} -PversionType=bleeding-edge --stacktrace
         mv android/build/outputs/apk/standard/release/android-standard-release.apk android/build/outputs/apk/standard/release/Mindustry-BE-Android-${RELEASE_VERSION}.apk
-    - name: Upload desktop artifacts
-      uses: svenstaro/upload-release-action@v2
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: Mindustry/desktop/build/libs/Mindustry-BE-Desktop-${{ env.RELEASE_VERSION }}.jar
-        tag: ${{ github.ref }}
-    - name: Upload server artifacts
-      uses: svenstaro/upload-release-action@v2
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: Mindustry/server/build/libs/Mindustry-BE-Server-${{ env.RELEASE_VERSION }}.jar
-        tag: ${{ github.ref }}
     - name: Upload Android artifacts
       uses: svenstaro/upload-release-action@v2
       with:
