@@ -15,7 +15,7 @@ jobs:
     - name: Run unit tests
       run: ./gradlew clean cleanTest test
     - name: Trigger BE build
-      if: ${{ github.repository == 'Anuken/Mindustry' }}
+      if: ${{ github.repository == 'youngterror3/mindustry' }}
       run: |
         git clone --depth=1 --branch=master https://github.com/Anuken/MindustryBuilds ../MindustryBuilds
         cd ../MindustryBuilds
