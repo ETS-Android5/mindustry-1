@@ -12,8 +12,10 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 14
+    - name: Give permision
+      run: chmod +x ./gradlew
     - name: Run unit tests
-      run: ./gradlew desktop:dist
+      run: ./gradlew clean cleanTest test
     - name: Trigger BE build
       if: ${{ github.repository == 'youngterror3/mindustry' }}
       run: |
