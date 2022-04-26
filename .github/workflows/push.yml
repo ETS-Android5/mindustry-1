@@ -19,9 +19,9 @@ jobs:
     - name: Trigger BE build
       if: ${{ github.repository == 'youngterror3/mindustry' }}
       run: |
-        git clone --depth=1 --branch=master https://github.com/Anuken/MindustryBuilds ../MindustryBuilds
-        cd ../MindustryBuilds
+        git clone --depth=1 --branch=master https://github.com/youngterror3/sidus-victor-builds ../sidus-victor-builds
+        cd ../sidus-victor-builds
         BNUM=$(($GITHUB_RUN_NUMBER + 20000))
         git tag ${BNUM}
         git config --global user.name "Build Uploader"
-        git push https://Anuken:${{ secrets.API_TOKEN_GITHUB }}@github.com/Anuken/MindustryBuilds ${BNUM}
+        git push https://youngterror3:${{ secrets.API_TOKEN_GITHUB }}@github.com/youngterror3/sidus-victor-builds ${BNUM}
